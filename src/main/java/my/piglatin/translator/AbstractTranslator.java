@@ -22,7 +22,6 @@ abstract class AbstractTranslator implements Translator {
                     } else {
                         result.add(entry.getValue());
                     }
-
                 }
                 return result.stream().map(String::valueOf).collect(Collectors.joining());
             }
@@ -30,7 +29,7 @@ abstract class AbstractTranslator implements Translator {
         return source;
     }
 
-    protected abstract List<Character> transform(List<Character> toProcess);
+    abstract List<Character> transform(List<Character> characters);
 
     private Holder separate(String source) {
         //here we separate letters and non-letters, also keeping latest letter index

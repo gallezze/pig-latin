@@ -1,15 +1,14 @@
 package my.piglatin.translator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ConsonantTranslator extends AbstractTranslator {
 
-    private final List<Character> SUFFIX = Arrays.asList('a', 'y');
+    private final List<Character> SUFFIX = List.of('a', 'y');
 
     private static final List<Character> CONSONANTS =
-            Arrays.asList('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z');
+            List.of('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z');
 
     @Override
     public boolean isApplicable(String source) {
@@ -17,12 +16,12 @@ public class ConsonantTranslator extends AbstractTranslator {
     }
 
     @Override
-    protected List<Character> transform(List<Character> toProcess) {
-        var result = new ArrayList<Character>(toProcess.size() + SUFFIX.size());
-        for (int i = 1; i < toProcess.size(); i++) {
-            result.add(i - 1, transform(toProcess.get(i - 1), toProcess.get(i)));
+    protected List<Character> transform(List<Character> characters) {
+        var result = new ArrayList<Character>(characters.size() + SUFFIX.size());
+        for (int i = 1; i < characters.size(); i++) {
+            result.add(i - 1, transform(characters.get(i - 1), characters.get(i)));
         }
-        result.add(toProcess.size() - 1, transform(toProcess.get(toProcess.size() - 1), toProcess.get(0)));
+        result.add(characters.size() - 1, transform(characters.get(characters.size() - 1), characters.get(0)));
         result.addAll(SUFFIX);
         return result;
     }

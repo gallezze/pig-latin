@@ -30,7 +30,7 @@ class VowelTranslatorTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> vowelWordShouldBeTraslated() {
+    Stream<DynamicTest> vowelWordShouldBeTranslated() {
         return Stream.of(
                 new SimpleImmutableEntry<>("apple", "appleway"),
                 new SimpleImmutableEntry<>("ilky", "ilkyway")
@@ -44,7 +44,7 @@ class VowelTranslatorTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> exemptShouldntBeTraslated() {
+    Stream<DynamicTest> exemptShouldntBeTranslated() {
         return Stream.of("", "!", "...", "?!")
                 .map(suffix -> {
                     var value = "away" + suffix;

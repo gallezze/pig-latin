@@ -28,7 +28,7 @@ class ConsonantTranslatorTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> consonantWordShouldBeTransformed() {
+    Stream<DynamicTest> consonantWordShouldBeTranslated() {
         return Stream.of(
                     new SimpleImmutableEntry<>("Hello", "Ellohay"),
                     new SimpleImmutableEntry<>("HELlO", "ELLoHay"),
@@ -44,7 +44,7 @@ class ConsonantTranslatorTest {
     }
 
     @TestFactory
-    Stream<DynamicTest> exemptShouldntBeTransformed() {
+    Stream<DynamicTest> exemptShouldntBeTranslated() {
         return Stream.of("", "!", "...", "?!")
                 .map(suffix -> {
                     var value = "way" + suffix;

@@ -1,14 +1,13 @@
 package my.piglatin.translator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class VowelTranslator extends AbstractTranslator {
 
-    private final List<Character> SUFFIX = Arrays.asList('w', 'a', 'y');
+    private final List<Character> SUFFIX = List.of('w', 'a', 'y');
 
-    private static final List<Character> VOWELS = Arrays.asList('a', 'e', 'i', 'o', 'u');
+    private static final List<Character> VOWELS = List.of('a', 'e', 'i', 'o', 'u');
 
     @Override
     public boolean isApplicable(String source) {
@@ -16,8 +15,8 @@ public class VowelTranslator extends AbstractTranslator {
     }
 
     @Override
-    protected List<Character> transform(List<Character> toProcess) {
-        var result = new ArrayList<>(toProcess);
+    protected List<Character> transform(List<Character> characters) {
+        var result = new ArrayList<>(characters);
         result.addAll(SUFFIX);
         return result;
     }
